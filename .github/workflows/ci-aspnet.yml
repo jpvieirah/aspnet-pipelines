@@ -18,4 +18,4 @@ jobs:
       language: "aspnet"
       environment: "ci"
       dotnet-version: "7.0"  # Passando a versão do .NET
-      project-path: "aspnet-pipelines/aspnet-pipelines.csproj"  # Caminho para o seu projeto ASP.NET
+      project-path: "aspnet-pipelines"  # Caminho para a pasta onde está o seu projeto ASP.NET
