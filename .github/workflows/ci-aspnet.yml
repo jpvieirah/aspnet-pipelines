@@ -2,19 +2,17 @@ name: CI ASP.NET
 
 on:
   push:
-    branches: [ "develop", "main" ]
-    paths:
-      - "aspnet-pipelines/**"  # Dispara o workflow apenas se houver alterações na pasta "aspnet-pipelines"
+    branches:
+      - main  # Executa quando houver push na branch 'main'
   pull_request:
-    branches: [ "develop", "main" ]
-    paths:
-      - "aspnet-pipelines/**"  # Dispara o workflow apenas se houver alterações na pasta "aspnet-pipelines"
-  workflow_dispatch:  # Permite execução manual do workflow
+    types: [opened, synchronize, reopened]  # Executa em PRs abertos, sincronizados ou reabertos
 
 jobs:
   ci-aspnet:
-    uses: jpvieirah/central-reusable/.github/workflows/aspnet-build-reusable.yml@main  # Referência o arquivo reutilizável
+    uses: jpvieirah/central-reusable/.github/workflows/aspnet-build-reusable.yml@main  # Referencia o arquivo reutilizável
     with:
       language: "aspnet"
       environment: "ci"
       dotnet-version: "7.0"  # Passando a versão do .NET
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  # Passando o SONAR_TOKEN como secret
