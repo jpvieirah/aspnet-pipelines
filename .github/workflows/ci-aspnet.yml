@@ -1,0 +1,19 @@
+name: CI ASP.NET
+
+on:
+  push:
+    branches: [ "develop", "main" ]
+    paths:
+      - "aspnet-pipelines/**"  # Dispara o workflow apenas se houver alterações na pasta "aspnet-pipelines"
+  pull_request:
+    branches: [ "develop", "main" ]
+    paths:
+      - "aspnet-pipelines/**"  # Dispara o workflow apenas se houver alterações na pasta "aspnet-pipelines"
+  workflow_dispatch:  # Permite execução manual do workflow
+
+jobs:
+  ci-aspnet:
+    uses: ./.github/workflows/build-reusable.yml  # Referencia o arquivo reutilizável
+    with:
+      language: "aspnet"  # Passando parâmetro para o job reutilizável
+      environment: "ci"
