@@ -13,9 +13,8 @@ on:
 
 jobs:
   ci-aspnet:
-    uses: jpvieirah/central-reusable/.github/workflows/aspnet-build-reusable.yml@main  # Referencia o arquivo reutilizável
+    uses: jpvieirah/central-reusable/.github/workflows/aspnet-build-reusable.yml@main  # Referência o arquivo reutilizável
     with:
       language: "aspnet"
       environment: "ci"
       dotnet-version: "7.0"  # Passando a versão do .NET
-      project-path: "aspnet-pipelines"  # Caminho para a pasta onde está o seu projeto ASP.NET
