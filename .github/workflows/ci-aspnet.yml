@@ -2,7 +2,7 @@ name: CI ASP.NET
 
 on:
   push:
-    branches: [ "develop", "main" ]
+    branches: [ "develop", "main", "release/Adding-SonarCloud" ]
     paths:
       - "aspnet-pipelines/**"
   pull_request:
