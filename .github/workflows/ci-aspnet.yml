@@ -2,19 +2,20 @@ name: CI ASP.NET
 
 on:
   push:
-    branches: [ "develop", "main" ]
+    branches: [ "develop", "main", "release/Adding-SonarCloud" ]
     paths:
-      - "aspnet-pipelines/**"  # Dispara o workflow apenas se houver alterações na pasta "aspnet-pipelines"
+      - "aspnet-pipelines/**"
   pull_request:
     branches: [ "develop", "main" ]
     paths:
-      - "aspnet-pipelines/**"  # Dispara o workflow apenas se houver alterações na pasta "aspnet-pipelines"
-  workflow_dispatch:  # Permite execução manual do workflow
+      - "aspnet-pipelines/**"
 
 jobs:
   ci-aspnet:
-    uses: jpvieirah/central-reusable/.github/workflows/aspnet-build-reusable.yml@main  # Referência o arquivo reutilizável
+    uses: jpvieirah/central-reusable/.github/workflows/aspnet-build-reusable.yml@develop
     with:
       language: "aspnet"
       environment: "ci"
-      dotnet-version: "7.0"  # Passando a versão do .NET
+      dotnet-version: "7.0"
+    secrets:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
